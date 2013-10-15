@@ -29,7 +29,7 @@ class SearchEngineTest extends \PHPUnit_Framework_TestCase
     /**
      * @var SearchEngine\Engine $engine
      */
-    protected static $backend;
+    protected static $engine;
 
     public static function setUpBeforeClass()
     {
@@ -45,8 +45,8 @@ class SearchEngineTest extends \PHPUnit_Framework_TestCase
             try {
                 self::deleteRecursive(self::$luceneIndexPath);
                 mkdir($indexDir);
-                self::$backend = new SearchEngine\Engine('\SearchEngine\Tests\Models\Product', $indexDir);
-                self::$backend->fullUpdateIndex();
+                self::$engine = new SearchEngine\Engine('\SearchEngine\Tests\Models\Product', $indexDir);
+                self::$engine->fullUpdateIndex();
 
             } catch (SearchEngine\Exception\SearchCanNotConnectException $e) {
                 self::markTestSkipped('Couldn\'t open ZendLucene index.');
@@ -84,19 +84,19 @@ class SearchEngineTest extends \PHPUnit_Framework_TestCase
 
     public function testSearchByQuery()
     {
-        self::$backend->search('телефон', $count);
+        self::$engine->search('телефон', $count);
         $this->assertEquals(0, $count, 'Search result must bee empty');
 
-        self::$backend->search('услуга', $count);
+        self::$engine->search('услуга', $count);
         $this->assertEquals(1, $count, 'No search result');
 
-        self::$backend->search('услуга часы', $count);
+        self::$engine->search('услуга часы', $count);
     }
 
     public function testHighlightMatches()
     {
-        self::$backend->search('товар', $count);
-        $highlightHtml = self::$backend->highlightMatches("Тестовый товар");
+        self::$engine->search('товар', $count);
+        $highlightHtml = self::$engine->highlightMatches("Тестовый товар");
         $this->assertEquals(
             $highlightHtml, 'Тестовый <span class="highlight-word"> товар </span>', 'No highlight matches'
         );
@@ -104,13 +104,13 @@ class SearchEngineTest extends \PHPUnit_Framework_TestCase
 
     public function testMorphologySearchByQuery()
     {
-        self::$backend->search('много товаров', $count);
+        self::$engine->search('много товаров', $count);
         $this->assertEquals(1, $count, 'No search result');
 
-        self::$backend->search('товары', $count);
+        self::$engine->search('товары', $count);
         $this->assertEquals(1, $count, 'No search result');
 
-        self::$backend->search('услуги и товары', $count);
+        self::$engine->search('услуги и товары', $count);
         $this->assertEquals(2, $count, 'No search result');
     }
 }
