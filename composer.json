@@ -1,0 +1,26 @@
+{
+    "name": "nqxcode/search-engine",
+    "description": "search engine based on zend lucene",
+    "authors": [
+        {
+            "name": "nc101ux",
+            "email": "nc101ux@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.3",
+        "zendframework/zend-stdlib": "2.*"
+    },
+    "autoload": {
+        "psr-0": {
+            "SearchEngine": "src/",
+            "ZendSearch": "src/zend-search/library/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    }
+}

@@ -1,0 +1,72 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
+    ],
+    "hash": "f8d6beb37ee357d127aa42dcce21b982",
+    "packages": [
+        {
+            "name": "zendframework/zend-stdlib",
+            "version": "2.2.4",
+            "target-dir": "Zend/Stdlib",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/zendframework/Component_ZendStdlib.git",
+                "reference": "7c87ce4e840957596bf3401fa4ae4fb0355682e2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://packages.zendframework.com/composer/zendframework-zend-stdlib-7c87ce4e840957596bf3401fa4ae4fb0355682e2-zip-ac5a1a.zip",
+                "reference": "2.2.4",
+                "shasum": "eda09687763db7ad8ce8908a7f89f3ce0daa9f1d"
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "suggest": {
+                "zendframework/zend-eventmanager": "To support aggregate hydrator usage",
+                "zendframework/zend-servicemanager": "To support hydrator plugin manager usage"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.2-dev",
+                    "dev-develop": "2.3-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Zend\\Stdlib\\": ""
+                }
+            },
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "description": " ",
+            "keywords": [
+                "stdlib",
+                "zf2"
+            ],
+            "support": {
+                "source": "https://github.com/zendframework/Component_ZendStdlib/tree/release-2.2.3"
+            },
+            "time": "2013-08-21 17:08:07"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "stable",
+    "stability-flags": [
+
+    ],
+    "platform": {
+        "php": ">=5.3.3"
+    },
+    "platform-dev": [
+
+    ]
+}
