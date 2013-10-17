@@ -30,9 +30,9 @@ class Engine
 {
     private $connection = null;
     /**
-     * @var AbstractQuery
+     * @var string
      */
-    private $query;
+    private $lastQuery;
 
     private $defaultAnalyzer = null;
     private $analyzerForHighlighter = null;
@@ -213,41 +213,39 @@ class Engine
     /**
      * Сформировать поисковый запрос
      *
-     * @param $query
+     * @param $queryWord
      * @param array $fields
-     * @return \ZendSearch\Lucene\Search\Query\AbstractQuery
+     * @return string
      */
-    protected function buildQuery($query, array $fields)
+    protected function buildQuery($queryWord, array $fields)
     {
-        $userQuery = trim($query);
+        $queryWord = trim($queryWord);
         $queryStatements = array_map(
-            function ($field) use ($userQuery) {
-                return "{$field}: {$userQuery}";
+            function ($field) use ($queryWord) {
+                return "{$field}:{$queryWord}";
             },
             $fields
         );
 
-        $queryString = join(' ', $queryStatements);
-        return QueryParser::parse($queryString);
+        return join(' ', $queryStatements);
     }
 
 
     /**
      * Выполнить поисковый запрос. Результат представляет собой
      *
-     * @param string $query строка запроса
+     * @param string $queryWord строка запроса
      * @param int $totalCount
      * @param string $queryEncoding кодировка строки запроса
      * @param ModelFilter|null $filter фильтр моделей
      * @return QueryHit[]
      */
-    public function search($query, &$totalCount, $queryEncoding = 'utf-8', ModelFilter $filter = null)
+    public function search($queryWord, &$totalCount, $queryEncoding = 'utf-8', ModelFilter $filter = null)
     {
-        $userQuery = mb_convert_encoding($query, 'utf-8', $queryEncoding);
+        $this->lastQuery = mb_convert_encoding($queryWord, 'utf-8', $queryEncoding);
 
-        $fieldList = $this->getFields();
-        $this->query = $this->buildQuery($userQuery, $fieldList);
-        $hitList = $this->connection->find($this->query);
+        $query = $this->buildQuery($this->lastQuery, $this->getFields());
+        $hitList = $this->connection->find($query);
 
         if (null !== $filter) {
             $hitList = $filter->doFilter($hitList);
@@ -369,14 +367,15 @@ class Engine
     {
         $highlightedHTMLFragment = '';
 
-        if ($this->query instanceof AbstractQuery) {
+        if (!empty($this->lastQuery)) {
+            $queryParser = QueryParser::parse($this->lastQuery);
             /**
              * Убираем фильтры стоп-слов для подсветки слов с псевдокорнями типа 'под' и т.п.
              */
             Analyzer::setDefault($this->analyzerForHighlighter);
 
             $highlightedHTMLFragment =
-                $this->query->htmlFragmentHighlightMatches($inputHTMLFragment, $inputEncoding, new Highlighter());
+                $queryParser->htmlFragmentHighlightMatches($inputHTMLFragment, $inputEncoding, new Highlighter());
 
             Analyzer::setDefault($this->defaultAnalyzer);
 
