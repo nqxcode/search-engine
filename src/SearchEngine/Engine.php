@@ -222,7 +222,7 @@ class Engine
         $userQuery = trim($query);
         $queryStatements = array_map(
             function ($field) use ($userQuery) {
-                return "\"{$field}: \"{$userQuery}\"\"";
+                return "{$field}: {$userQuery}";
             },
             $fields
         );
