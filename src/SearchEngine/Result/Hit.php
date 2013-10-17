@@ -64,7 +64,7 @@ class Hit
             $item = new $class();
             if ($item instanceof ISearchable) {
                 $item = $item::find($hit->pk);
-                if (!is_null($item)) {
+                if (!is_null($item) && $item->isAvailableForIndexing()) {
                     $result = new Hit($item, $hit->score);
                 }
             }
