@@ -21,7 +21,7 @@ use  SearchEngine\Tests\Models\Product;
 
 class SearchEngineTest extends \PHPUnit_Framework_TestCase
 {
-    protected static $tempDir = 'c:/windows/temp';
+    protected static $tempDir = 'c:/tmp';
     /**
      * @var string
      */
@@ -91,6 +91,8 @@ class SearchEngineTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(1, $count, 'No search result');
 
         self::$engine->search('услуга часы', $count);
+
+        $this->assertEquals(0, $count, 'No expected search result');
     }
 
     public function testHighlightMatches()
@@ -100,6 +102,18 @@ class SearchEngineTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(
             $highlightHtml, 'Тестовый <span class="highlight-word"> товар </span>', 'No highlight matches'
         );
+
+        self::$engine->search('товары', $count);
+        $highlightHtml = self::$engine->highlightMatches("Тестовый товар");
+        $this->assertEquals(
+            $highlightHtml, 'Тестовый <span class="highlight-word"> товар </span>', 'No highlight matches'
+        );
+    }
+
+    public function testSearchQueryWithSpecialChars()
+    {
+        self::$engine->search('*.+,!?^%test', $count);
+        $this->assertEquals(0, $count, 'Search result must bee empty');
     }
 
     public function testMorphologySearchByQuery()
@@ -110,7 +124,10 @@ class SearchEngineTest extends \PHPUnit_Framework_TestCase
         self::$engine->search('товары', $count);
         $this->assertEquals(1, $count, 'No search result');
 
+        self::$engine->search('услуги', $count);
+        $this->assertEquals(1, $count, 'No search result');
+
         self::$engine->search('услуги и товары', $count);
-        $this->assertEquals(2, $count, 'No search result');
+        $this->assertEquals(0, $count, 'No search result');
     }
 }

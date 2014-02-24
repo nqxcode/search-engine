@@ -14,10 +14,11 @@ use ZendSearch\Lucene\Lucene;
 use ZendSearch\Lucene\Document;
 use ZendSearch\Lucene\Document\Field;
 use ZendSearch\Lucene\Index\Term;
-use ZendSearch\Lucene\Search\Query\AbstractQuery;
+use ZendSearch\Lucene\Search\Query;
 use ZendSearch\Lucene\Search\Query\MultiTerm;
 use ZendSearch\Lucene\Search\QueryHit;
-use \ZendSearch\Lucene\Search\QueryParser;
+use ZendSearch\Lucene\Search\QueryParser;
+use ZendSearch\Lucene\Search\Query\Wildcard;
 
 /**
  * Class Engine
@@ -222,12 +223,12 @@ class Engine
         $queryWord = trim($queryWord);
         $queryStatements = array_map(
             function ($field) use ($queryWord) {
-                return "{$field}:{$queryWord}";
+                return "{$field}:\"{$queryWord}\"";
             },
             $fields
         );
 
-        return join(' ', $queryStatements);
+        return join(' OR ', $queryStatements);
     }
 
 
@@ -242,6 +243,10 @@ class Engine
      */
     public function search($queryWord, &$totalCount, $queryEncoding = 'utf-8', ModelFilter $filter = null)
     {
+        Wildcard::setMinPrefixLength(0);
+
+        // фильтрация всех символов, кроме букв и цифр
+        $queryWord = mb_ereg_replace("[^а-яА-Яa-zA-Z0-9]+", " ", $queryWord);
         $this->lastQuery = mb_convert_encoding($queryWord, 'utf-8', $queryEncoding);
 
         $query = $this->buildQuery($this->lastQuery, $this->getFields());
