@@ -58,6 +58,6 @@ class Highlighter implements HighlighterInterface
 
     public function applyColour($stringToHighlight)
     {
-        return "<span class='highlight-word'>&nbsp;{$stringToHighlight}&nbsp;</span>";
+        return "<span class='highlight-word'>{$stringToHighlight}</span>";
     }
 }

@@ -28,7 +28,7 @@ class MorphyFilter implements TokenFilterInterface
      *
      * @var int
      */
-    const MIN_TOKEN_LENGTH = 3;
+    const MIN_TOKEN_LENGTH = 1;
 
     protected $dictionaryEncoding = null;
 
