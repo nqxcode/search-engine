@@ -245,9 +245,10 @@ class Engine
     {
         Wildcard::setMinPrefixLength(0);
 
-        // фильтрация всех символов, кроме букв и цифр
-        $queryWord = mb_ereg_replace("[^а-яА-Яa-zA-Z0-9]+", " ", $queryWord);
         $this->lastQuery = mb_convert_encoding($queryWord, 'utf-8', $queryEncoding);
+
+        // фильтрация всех символов, кроме букв и цифр
+        $this->lastQuery = mb_ereg_replace("[^а-яА-Яa-zA-Z0-9]+", " ", $this->lastQuery);
 
         $query = $this->buildQuery($this->lastQuery, $this->getFields());
         $hitList = $this->connection->find($query);
