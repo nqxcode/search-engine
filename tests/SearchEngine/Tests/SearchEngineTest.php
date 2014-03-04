@@ -100,13 +100,13 @@ class SearchEngineTest extends \PHPUnit_Framework_TestCase
         self::$engine->search('товар', $count);
         $highlightHtml = self::$engine->highlightMatches("Тестовый товар");
         $this->assertEquals(
-            $highlightHtml, 'Тестовый <span class="highlight-word"> товар </span>', 'No highlight matches'
+            $highlightHtml, 'Тестовый <span class="highlight-word">товар</span>', 'No highlight matches'
         );
 
         self::$engine->search('товары', $count);
         $highlightHtml = self::$engine->highlightMatches("Тестовый товар");
         $this->assertEquals(
-            $highlightHtml, 'Тестовый <span class="highlight-word"> товар </span>', 'No highlight matches'
+            $highlightHtml, 'Тестовый <span class="highlight-word">товар</span>', 'No highlight matches'
         );
     }
 
