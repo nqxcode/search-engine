@@ -21,7 +21,10 @@ use  SearchEngine\Tests\Models\Product;
 
 class SearchEngineTest extends \PHPUnit_Framework_TestCase
 {
-    protected static $tempDir = 'c:/tmp';
+    /**
+     * @var string
+     */
+    protected static $tempDir;
     /**
      * @var string
      */
@@ -33,6 +36,7 @@ class SearchEngineTest extends \PHPUnit_Framework_TestCase
 
     public static function setUpBeforeClass()
     {
+        self::$tempDir = sys_get_temp_dir();
         self::createProducts();
 
         $tempDir               = self::$tempDir;
