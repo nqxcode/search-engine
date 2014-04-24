@@ -238,7 +238,7 @@ class Engine
      * @param int $totalCount
      * @param string $queryEncoding кодировка строки запроса
      * @param ModelFilter|null $filter фильтр моделей
-     * @return Hit[]
+     * @return QueryHit[]
      */
     public function search($queryWord, &$totalCount, $queryEncoding = 'utf-8', ModelFilter $filter = null)
     {

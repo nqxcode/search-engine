@@ -15,7 +15,7 @@ In order that the model was available to indexation, it is necessary:
 
 ## Initialization on search engine
 ```PHP
-$searchEngine = new SearchEngine\Engine('\SearchEngine\Tests\Models\Product', $indexDirectory); // $indexDirectory path to index directory
+$searchEngine = new SearchEngine\Engine('Product', $indexDirectory); // $indexDirectory path to index directory
 ```
 ## Declare model with ISearchable interface
 
@@ -71,6 +71,9 @@ $queryHits = $searchEngine->search($query);
 
 ### Get result for paginator
 ```PHP
+/**
+ * ZendSearch\Lucene\Search\QueryHit[] $hits
+ */
 $hits = $searchEngine->parseHitsByRange($queryHits, $elementsPerPage, $currentPage);
 
 // get the found ISearchable model from each $hit
@@ -81,6 +84,9 @@ foreach ($hits as $hit):
 
 ### Get full result
 ```PHP
+/**
+ * SearchEngine\Result\Hit[] $hits
+ */
 $hits = $searchEngine->parseHits($queryHits);
 
 // get the found ISearchable model from each $hit
