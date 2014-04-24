@@ -14,57 +14,77 @@ In order that the model was available to indexation, it is necessary:
 2. Declare model with `ISearchable` interface;
 
 ## Initialization on search engine
-    $searchEngine = new SearchEngine\Engine('\SearchEngine\Tests\Models\Product', $indexDirectory); // $indexDirectory path to index directory
-
+```PHP
+$searchEngine = new SearchEngine\Engine('\SearchEngine\Tests\Models\Product', $indexDirectory); // $indexDirectory path to index directory
+```
 ## Declare model with ISearchable interface
 
-    use SearchEngine\ISearchable;
+```PHP
+use SearchEngine\ISearchable;
 
-    class Product implements ISearchable
-    {
-        // TODO ...
-    }
+class Product implements ISearchable
+{
+    // TODO ...
+}
+```
+
 ### Example of realization `getAttributesForIndexing` method of `ISearchable` interface
-    use SearchEngine\ISearchable;
+```PHP
+use SearchEngine\ISearchable;
 
-    class Product implements ISearchable
+class Product implements ISearchable
+{
+    // ...
+
+    public funtion getAttributesForIndexing()
     {
-        // ...
-
-        public funtion getAttributesForIndexing()
-        {
-            // list of couples "field name - field value"
-            return array(
-                new Attribute('fieldName', $this->fieldName),
-                new Attribute('otherFieldName', $this->otherFieldName)
-            );
-        }
+        // list of couples "field name - field value"
+        return array(
+            new Attribute('fieldName', $this->fieldName),
+            new Attribute('otherFieldName', $this->otherFieldName)
+        );
     }
+}
+```
 
 ## Operation on index
+
 ### Full update for search index
-    $searchEngine->fullUpdateIndex();
+```PHP
+$searchEngine->fullUpdateIndex();
+```
 
 ### Update index for `ISearchable` model
-    $searchEngine->updateIndex($model)
+```PHP
+$searchEngine->updateIndex($model)
+```
 
 ### Delete index for `ISearchable` model
-    $searchEngine->deleteIndex($model)
+```PHP
+$searchEngine->deleteIndex($model)
+```
 
 ## Execute search query
-    $queryHits = $searchEngine->search($query);
-### Get result for paginator
-     $hits = $searchEngine->parseHitsByRange($queryHits, $elementsPerPage, $currentPage);
+```PHP
+$queryHits = $searchEngine->search($query);
+```
 
-     // get the found ISearchable model from each $hit
-     foreach ($hits as $hit):
-         $model = $hit->getItem();
-     }
+### Get result for paginator
+```PHP
+$hits = $searchEngine->parseHitsByRange($queryHits, $elementsPerPage, $currentPage);
+
+// get the found ISearchable model from each $hit
+foreach ($hits as $hit):
+    $model = $hit->getItem();
+}
+```
 
 ### Get full result
-    $hits = $searchEngine->parseHits($queryHits);
+```PHP
+$hits = $searchEngine->parseHits($queryHits);
 
-     // get the found ISearchable model from each $hit
-     foreach ($hits as $hit):
-         $model = $hit->getItem();
-     }
+// get the found ISearchable model from each $hit
+foreach ($hits as $hit):
+    $model = $hit->getItem();
+}
+```
