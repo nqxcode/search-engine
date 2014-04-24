@@ -15,11 +15,13 @@ In order that the model was available to indexation, it is necessary:
 1. Add name of class of model to list of model classes at initialization search engine.
 2. Declare model with `ISearchable` interface;
 
-## Initialization on search engine
+## Usage
+
+### Initialization on search engine
 ```PHP
 $searchEngine = new SearchEngine\Engine('Product', $indexDirectory); // $indexDirectory path to index directory
 ```
-## Declare model with ISearchable interface
+### Declare model with ISearchable interface
 
 ```PHP
 use SearchEngine\ISearchable;
@@ -30,7 +32,7 @@ class Product implements ISearchable
 }
 ```
 
-### Example of realization `getAttributesForIndexing` method of `ISearchable` interface
+#### Example of realization `getAttributesForIndexing` method of `ISearchable` interface
 ```PHP
 use SearchEngine\ISearchable;
 
@@ -49,24 +51,24 @@ class Product implements ISearchable
 }
 ```
 
-## Operation on index
+### Operation on index
 
-### Full update for search index
+#### Full update for search index
 ```PHP
 $searchEngine->fullUpdateIndex();
 ```
 
-### Update index for `ISearchable` model
+#### Update index for `ISearchable` model
 ```PHP
 $searchEngine->updateIndex($model);
 ```
 
-### Delete index for `ISearchable` model
+#### Delete index for `ISearchable` model
 ```PHP
 $searchEngine->deleteIndex($model);
 ```
 
-## Execute search query
+### Execute search query
 ```PHP
 /**
  * ZendSearch\Lucene\Search\QueryHit[] $hits
@@ -74,7 +76,7 @@ $searchEngine->deleteIndex($model);
 $queryHits = $searchEngine->search($query);
 ```
 
-### Get result for paginator
+#### Get result for paginator
 ```PHP
 /**
  * SearchEngine\Result\Hit[] $hits
@@ -87,7 +89,7 @@ foreach ($hits as $hit):
 }
 ```
 
-### Get full result
+#### Get full result
 ```PHP
 /**
  * SearchEngine\Result\Hit[] $hits
