@@ -56,12 +56,12 @@ $searchEngine->fullUpdateIndex();
 
 ### Update index for `ISearchable` model
 ```PHP
-$searchEngine->updateIndex($model)
+$searchEngine->updateIndex($model);
 ```
 
 ### Delete index for `ISearchable` model
 ```PHP
-$searchEngine->deleteIndex($model)
+$searchEngine->deleteIndex($model);
 ```
 
 ## Execute search query
