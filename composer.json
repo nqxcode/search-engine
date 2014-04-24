@@ -1,6 +1,7 @@
 {
     "name": "nqxcode/search-engine",
     "description": "Search engine based on Zend Lucene.",
+    "license": "MIT",
     "authors": [
         {
             "name": "nc101ux",

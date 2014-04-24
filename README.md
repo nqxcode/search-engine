@@ -99,3 +99,6 @@ foreach ($hits as $hit):
     $model = $hit->getItem();
 }
 ```
+
+## License
+Search engine licenced under the MIT license.
