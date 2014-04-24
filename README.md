@@ -6,7 +6,9 @@ Search engine based on Zend Lucene
 [![Latest Unstable Version](https://poser.pugx.org/nqxcode/search-engine/v/unstable.png)](https://packagist.org/packages/nqxcode/search-engine)
 [![License](https://poser.pugx.org/nqxcode/search-engine/license.png)](https://packagist.org/packages/nqxcode/search-engine)
 
-Gives opportunity of indexing of models (ActiveRecord) on demanded fields.
+Search engine gives opportunity of indexing of models (ActiveRecord) on demanded fields.
+Search engine uses the morphological filter for english and russian words.
+Morphological filter based on "phpMorphy" (morphological analyzer library).
 
 In order that the model was available to indexation, it is necessary:
 
