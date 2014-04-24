@@ -1,17 +1,16 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Andrey
- * Date: 26.08.13
- * Time: 17:34
- * MorphyFilter
- */
-
 namespace SearchEngine;
 
 use ZendSearch\Lucene\Analysis\Token;
 use ZendSearch\Lucene\Analysis\TokenFilter\TokenFilterInterface;
 
+/**
+ * Class MorphyFilter
+ *
+ * Морфологический фильтр, используемый при поиске и при построении индекса
+ *
+ * @package SearchEngine
+ */
 class MorphyFilter implements TokenFilterInterface
 {
     /**
@@ -30,6 +29,11 @@ class MorphyFilter implements TokenFilterInterface
      */
     const MIN_TOKEN_LENGTH = 1;
 
+    /**
+     * Словарь по умолчанию
+     *
+     * @var null
+     */
     protected $dictionaryEncoding = null;
 
     public function __construct()
@@ -71,6 +75,8 @@ class MorphyFilter implements TokenFilterInterface
     }
 
     /**
+     * Определить язык по текстовой строке
+     *
      * @param $text
      * @return mixed
      */
@@ -88,6 +94,8 @@ class MorphyFilter implements TokenFilterInterface
     }
 
     /**
+     * Получить объект phpMorphy по строке поискового запроса
+     *
      * @param $word
      * @return \phpMorphy
      */
@@ -107,6 +115,8 @@ class MorphyFilter implements TokenFilterInterface
     }
 
     /**
+     * Получить список с 'псевдокорнями'
+     *
      * @param string $toSearch
      * @return string[]
      */
@@ -117,6 +127,8 @@ class MorphyFilter implements TokenFilterInterface
     }
 
     /**
+     * Получить кодировку словаря
+     *
      * @param string $toSearch
      * @param string $defaultEncoding
      * @return string
@@ -134,6 +146,9 @@ class MorphyFilter implements TokenFilterInterface
         return $resultEncoding;
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function normalize(Token $srcToken)
     {
         $pseudoRootList = array();

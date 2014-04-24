@@ -1,15 +1,12 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Andrey
- * Date: 10.09.13
- * Time: 15:13
- * Language
- */
-
 namespace SearchEngine;
-
-
+/**
+ * Class Language
+ *
+ * Список поддерживаемых языков
+ *
+ * @package SearchEngine
+ */
 class Language
 {
     const RU = 'RU';

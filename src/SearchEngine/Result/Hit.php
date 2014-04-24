@@ -1,17 +1,16 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Andrey
- * Date: 27.08.13
- * Time: 15:57
- * To change this template use File | Settings | File Templates.
- */
-
 namespace SearchEngine\Result;
 
 use SearchEngine\ISearchable;
 use ZendSearch\Lucene\Search\QueryHit;
 
+/**
+ * Class Hit
+ *
+ * Описывает элемент результата поиска
+ *
+ * @package SearchEngine\Result
+ */
 class Hit
 {
     /**
@@ -35,6 +34,8 @@ class Hit
     }
 
     /**
+     * Получить score для hit
+     *
      * @return float
      */
     public function getScore()
@@ -43,6 +44,8 @@ class Hit
     }
 
     /**
+     * Получить модель
+     *
      * @return ISearchable
      */
     public function getItem()
@@ -51,6 +54,8 @@ class Hit
     }
 
     /**
+     * Создать объект класса Hit
+     *
      * @param QueryHit $hit
      * @return Hit|null
      */

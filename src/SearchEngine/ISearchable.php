@@ -1,12 +1,4 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Andrey
- * Date: 27.08.13
- * Time: 15:15
- * SearchEngine
- */
-
 namespace SearchEngine;
 
 /**

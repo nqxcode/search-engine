@@ -1,18 +1,14 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Andrey
- * Date: 05.09.13
- * Time: 15:00
- * Highlighter
- */
-
 namespace SearchEngine;
 
 use ZendSearch\Lucene\Document;
 use ZendSearch\Lucene\Search\Highlighter\HighlighterInterface;
 
 /**
+ * Class Highlighter
+ *
+ * Предоставляет фк для подсветки искомых слов
+ *
  * @category   Zend
  * @package    Zend_Search_Lucene
  * @subpackage Search
@@ -27,9 +23,7 @@ class Highlighter implements HighlighterInterface
     protected $_doc;
 
     /**
-     * Set document for highlighting.
-     *
-     * @param \ZendSearch\Lucene\Document\HTML $document
+     * {@inheritdoc}
      */
     public function setDocument(Document\HTML $document)
     {
@@ -37,9 +31,7 @@ class Highlighter implements HighlighterInterface
     }
 
     /**
-     * Get document for highlighting.
-     *
-     * @return \ZendSearch\Lucene\Document\HTML $document
+     * {@inheritdoc}
      */
     public function getDocument()
     {
@@ -47,9 +39,7 @@ class Highlighter implements HighlighterInterface
     }
 
     /**
-     * Highlight specified words
-     *
-     * @param string|array $words  Words to highlight. They could be organized using the array or string.
+     * {@inheritdoc}
      */
     public function highlight($words)
     {

@@ -1,5 +1,4 @@
 <?php
-
 namespace SearchEngine;
 
 use SearchEngine\Exception\SearchCanNotConnectException;
@@ -239,7 +238,7 @@ class Engine
      * @param int $totalCount
      * @param string $queryEncoding кодировка строки запроса
      * @param ModelFilter|null $filter фильтр моделей
-     * @return QueryHit[]
+     * @return Hit[]
      */
     public function search($queryWord, &$totalCount, $queryEncoding = 'utf-8', ModelFilter $filter = null)
     {
@@ -340,7 +339,7 @@ class Engine
     /**
      * Глобально обновить поисковый индекс
      */
-    public function fullUpdateIndex()
+    public function  fullUpdateIndex()
     {
         foreach ($this->modelClasses as $class) {
             $item = new $class();

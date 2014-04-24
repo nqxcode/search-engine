@@ -1,16 +1,7 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Andrey
- * Date: 17.09.13
- * Time: 10:33
- * ModelFilter
- */
-
 namespace SearchEngine\Result\Filter;
 
 use SearchEngine\ISearchable;
-use Symfony\Component\HttpFoundation\Request;
 use ZendSearch\Lucene\Search\QueryHit;
 
 /**
@@ -28,7 +19,7 @@ class ModelFilter
     protected $allowableClasses = array();
 
     /**
-     * @param $modelClasses Список с названиями классов моделей, по которым будет производиться поиск.
+     * @param array $modelClasses cписок с названиями классов моделей, по которым будет производиться поиск.
      * Если список пуст, фильтрация производиться не будет
      */
     public function __construct(array $modelClasses = array())
@@ -37,6 +28,8 @@ class ModelFilter
     }
 
     /**
+     * Фильтровать модели
+     *
      * @param QueryHit[] $itemList
      * @return QueryHit[]
      */

@@ -1,6 +1,6 @@
 {
     "name": "nqxcode/search-engine",
-    "description": "search engine based on zend lucene",
+    "description": "Search engine based on Zend Lucene.",
     "authors": [
         {
             "name": "nc101ux",
@@ -11,6 +11,9 @@
     "require": {
         "php": ">=5.3.3",
         "zendframework/zend-stdlib": "2.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
         "psr-0": {

@@ -1,18 +1,17 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Andrey
- * Date: 15.10.13
- * Time: 17:15
- * Product mock
- */
-
 namespace SearchEngine\Tests\Models;
 
 
 use SearchEngine\Attribute;
 use SearchEngine\ISearchable;
 
+/**
+ * Class Product
+ *
+ * Тестовая модель, реализующая интерфейс ISearchable
+ *
+ * @package SearchEngine\Tests\Models
+ */
 class Product implements ISearchable
 {
     protected static $repository = array();

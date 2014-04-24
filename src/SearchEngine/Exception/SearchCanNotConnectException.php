@@ -1,14 +1,13 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Andrey
- * Date: 11.10.13
- * Time: 17:06
- * SearchCanNotConnectException
- */
-
 namespace SearchEngine\Exception;
 
+/**
+ * Class SearchCanNotConnectException
+ *
+ * Класс исключения при ошибке доступа к поисковому индексу
+ *
+ * @package SearchEngine\Exception
+ */
 class SearchCanNotConnectException extends \Exception
 {
     /**

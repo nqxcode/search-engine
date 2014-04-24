@@ -1,16 +1,10 @@
 <?php
-/**
- * Created by JetBrains PhpStorm.
- * User: Andrey
- * Date: 11.10.13
- * Time: 13:33
- * Attribute
- */
-
 namespace SearchEngine;
 
 /**
  * Class Attribute
+ *
+ * Описывает пару 'название поля' - 'значение поля' для индексируемой модели
  *
  * @package Search
  */
@@ -22,8 +16,8 @@ class Attribute
     private $encoding;
 
     /**
-     * @param $name поле модели
-     * @param $value значение поля модели
+     * @param string $name поле модели
+     * @param string $value значение поля модели
      * @param string $encoding кодировка для значений полей модели
      */
     public function __construct($name, $value, $encoding = 'utf-8')
@@ -34,6 +28,8 @@ class Attribute
     }
 
     /**
+     * Получить название поля
+     *
      * @return string
      */
     public function getFieldName()
@@ -42,6 +38,8 @@ class Attribute
     }
 
     /**
+     * Получить значение поля
+     *
      * @return mixed
      */
     public function getValue()
