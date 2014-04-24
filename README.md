@@ -66,13 +66,16 @@ $searchEngine->deleteIndex($model)
 
 ## Execute search query
 ```PHP
+/**
+ * ZendSearch\Lucene\Search\QueryHit[] $hits
+ */
 $queryHits = $searchEngine->search($query);
 ```
 
 ### Get result for paginator
 ```PHP
 /**
- * ZendSearch\Lucene\Search\QueryHit[] $hits
+ * SearchEngine\Result\Hit[] $hits
  */
 $hits = $searchEngine->parseHitsByRange($queryHits, $elementsPerPage, $currentPage);
 
