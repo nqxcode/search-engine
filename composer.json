@@ -4,22 +4,59 @@
     "license": "MIT",
     "authors": [
         {
-            "name": "nc101ux",
+            "name": "Andrey Pokoev",
             "email": "nc101ux@gmail.com"
         }
     ],
     "minimum-stability": "dev",
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "heromantor/phpmorphy",
+                "version": "master",
+                "source": {
+                    "url": "https://github.com/heromantor/phpmorphy.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "autoload": {
+                    "files": [
+                        "src/common.php"
+                    ]
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "nqxcode/zend-search",
+                "version": "master",
+                "source": {
+                    "url": "https://github.com/nqxcode/ZendSearch.git",
+                    "type": "git",
+                    "reference": "master"
+                },
+                "autoload": {
+                    "psr-0": {
+                        "ZendSearch": "library/"
+                    }
+                }
+            }
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
-        "zendframework/zend-stdlib": "2.*"
+        "zendframework/zend-stdlib": "2.*",
+        "nqxcode/zend-search": "dev-master#73f478aab7",
+        "heromantor/phpmorphy": "dev-master#45204ee423"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
     },
     "autoload": {
         "psr-0": {
-            "SearchEngine": "src/",
-            "ZendSearch": "src/zend-search/library/"
+            "SearchEngine": "src/"
         }
     },
     "extra": {

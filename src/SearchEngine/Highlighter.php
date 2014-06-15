@@ -20,14 +20,14 @@ class Highlighter implements HighlighterInterface
      *
      * @var \ZendSearch\Lucene\Document\HTML
      */
-    protected $_doc;
+    protected $doc;
 
     /**
      * {@inheritdoc}
      */
     public function setDocument(Document\HTML $document)
     {
-        $this->_doc = $document;
+        $this->doc = $document;
     }
 
     /**
@@ -35,7 +35,7 @@ class Highlighter implements HighlighterInterface
      */
     public function getDocument()
     {
-        return $this->_doc;
+        return $this->doc;
     }
 
     /**
@@ -43,7 +43,7 @@ class Highlighter implements HighlighterInterface
      */
     public function highlight($words)
     {
-        $this->_doc->highlightExtended($words, array($this, 'applyColour'), array());
+        $this->doc->highlightExtended($words, array($this, 'applyColour'), array());
     }
 
     public function applyColour($stringToHighlight)

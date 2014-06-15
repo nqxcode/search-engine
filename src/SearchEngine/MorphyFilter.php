@@ -39,7 +39,6 @@ class MorphyFilter implements TokenFilterInterface
     public function __construct()
     {
         $configList = array();
-        require_once __DIR__ . '/phpmorphy/src/common.php';
 
         $config = new \stdClass();
         $config->directory = __DIR__ . '/phpmorphy/dicts/ru/windows-1251'; // путь к каталогу со словарями

@@ -1,5 +1,6 @@
 <?php
 namespace SearchEngine;
+
 /**
  * Class Language
  *
