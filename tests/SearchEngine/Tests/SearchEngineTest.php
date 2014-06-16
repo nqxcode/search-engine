@@ -34,8 +34,11 @@ class SearchEngineTest extends \PHPUnit_Framework_TestCase
      */
     protected static $engine;
 
+
     public static function setUpBeforeClass()
     {
+        require_once __DIR__ . '/../../bootstrap.php';
+
         self::$tempDir = sys_get_temp_dir();
         self::createProducts();
 
