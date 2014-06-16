@@ -339,7 +339,7 @@ class Engine
     /**
      * Глобально обновить поисковый индекс
      */
-    public function  fullUpdateIndex()
+    public function fullUpdateIndex()
     {
         foreach ($this->modelClasses as $class) {
             $item = new $class();

@@ -64,5 +64,4 @@ class ModelFilter
 
         return $itemList;
     }
-
 }
