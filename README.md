@@ -1,4 +1,4 @@
-Search engine based on Zend Lucene
+Search engine for ORM based on Zend Lucene
 =======
 
 [![Latest Stable Version](https://poser.pugx.org/nqxcode/search-engine/v/stable.png)](https://packagist.org/packages/nqxcode/search-engine)
