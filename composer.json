@@ -1,6 +1,6 @@
 {
     "name": "nqxcode/search-engine",
-    "description": "Search engine based on Zend Lucene.",
+    "description": "Search engine for ORM based on Zend Lucene.",
     "keywords": ["lucene", "search", "orm"],
     "license": "MIT",
     "authors": [
