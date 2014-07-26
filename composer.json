@@ -34,7 +34,7 @@
         "php": ">=5.3.3",
         "zendframework/zend-stdlib": "2.*",
         "zendframework/zendsearch": "dev-master",
-        "heromantor/phpmorphy": "dev-master#45204ee423"
+        "heromantor/phpmorphy": "dev-master"
     },
     "require-dev": {
         "phpunit/phpunit": "3.7.*"
