@@ -27,10 +27,6 @@
                     ]
                 }
             }
-        },
-        {
-            "url": "https://github.com/nqxcode/ZendSearch.git",
-            "type": "git"
         }
     ],
     "require": {
