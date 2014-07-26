@@ -29,27 +29,14 @@
             }
         },
         {
-            "type": "package",
-            "package": {
-                "name": "nqxcode/zend-search",
-                "version": "master",
-                "source": {
-                    "url": "https://github.com/nqxcode/ZendSearch.git",
-                    "type": "git",
-                    "reference": "master"
-                },
-                "autoload": {
-                    "psr-0": {
-                        "ZendSearch": "library/"
-                    }
-                }
-            }
+            "url": "https://github.com/nqxcode/ZendSearch.git",
+            "type": "git"
         }
     ],
     "require": {
         "php": ">=5.3.3",
         "zendframework/zend-stdlib": "2.*",
-        "nqxcode/zend-search": "dev-master#73f478aab7",
+        "zendframework/zendsearch": "dev-master",
         "heromantor/phpmorphy": "dev-master#45204ee423"
     },
     "require-dev": {
