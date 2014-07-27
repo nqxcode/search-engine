@@ -10,16 +10,10 @@
         }
     ],
     "minimum-stability": "dev",
-    "repositories": [
-        {
-            "url": "https://github.com/nqxcode/ZendSearch.git",
-            "type": "git"
-        }
-    ],
     "require": {
         "php": ">=5.3.3",
         "zendframework/zend-stdlib": "2.*",
-        "zendframework/zendsearch": "dev-master",
+        "nqxcode/zendsearch": "dev-master",
         "nqxcode/phpmorphy": "dev-master"
     },
     "require-dev": {
